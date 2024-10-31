@@ -1,0 +1,22 @@
+{
+    "sourceFile": ".history/src/hooks/useEnergyData_20241030152951.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730300071691,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730300525815,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { useState, useEffect } from 'react';\r\n-import dataLoader from '../../utils/data-loader_20241030151136';\r\n+import dataLoader from '../utils/dataLoader';\r\n \r\n const useEnergyData = (fileName) => {\r\n   const [data, setData] = useState([]);\r\n   const [isLoading, setIsLoading] = useState(true);\r\n"
+                }
+            ],
+            "date": 1730300071691,
+            "name": "Commit-0",
+            "content": "import { useState, useEffect } from 'react';\r\nimport dataLoader from '../../utils/data-loader_20241030151136';\r\n\r\nconst useEnergyData = (fileName) => {\r\n  const [data, setData] = useState([]);\r\n  const [isLoading, setIsLoading] = useState(true);\r\n  const [error, setError] = useState(null);\r\n  const [stats, setStats] = useState({\r\n    totalReadings: 0,\r\n    dateRange: { start: null, end: null },\r\n    hasGaps: false,\r\n    hasAnomalies: false\r\n  });\r\n\r\n  useEffect(() => {\r\n    let mounted = true;\r\n\r\n    const loadData = async () => {\r\n      try {\r\n        setIsLoading(true);\r\n        setError(null);\r\n        \r\n        const energyData = await dataLoader.loadCsvData(fileName);\r\n        \r\n        if (!mounted) return;\r\n\r\n        setData(energyData);\r\n        \r\n        // Calculate basic stats\r\n        setStats({\r\n          totalReadings: energyData.length,\r\n          dateRange: {\r\n            start: energyData[0]?.timestamp,\r\n            end: energyData[energyData.length - 1]?.timestamp\r\n          },\r\n          hasGaps: energyData.some(d => d.gap),\r\n          hasAnomalies: energyData.some(d => d.anomaly)\r\n        });\r\n\r\n      } catch (err) {\r\n        if (!mounted) return;\r\n        setError(err.message);\r\n        setData([]);\r\n      } finally {\r\n        if (mounted) {\r\n          setIsLoading(false);\r\n        }\r\n      }\r\n    };\r\n\r\n    loadData();\r\n\r\n    return () => {\r\n      mounted = false;\r\n    };\r\n  }, [fileName]);\r\n\r\n  // Refresh data manually\r\n  const refreshData = async () => {\r\n    dataLoader.clearCache();\r\n    setIsLoading(true);\r\n    try {\r\n      const freshData = await dataLoader.loadCsvData(fileName);\r\n      setData(freshData);\r\n      setError(null);\r\n    } catch (err) {\r\n      setError(err.message);\r\n    } finally {\r\n      setIsLoading(false);\r\n    }\r\n  };\r\n\r\n  return {\r\n    data,\r\n    isLoading,\r\n    error,\r\n    stats,\r\n    refreshData\r\n  };\r\n};\r\n\r\nexport default useEnergyData;"
+        }
+    ]
+}

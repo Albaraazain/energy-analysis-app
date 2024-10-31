@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/hooks/useQuesryParser.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1730296626474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730299916662,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-# File: src/hooks/useQueryParser.js\r\n \r\n import { useState, useCallback } from 'react';\r\n import { QueryParser, QUERY_TYPES } from '../utils/queryParser';\r\n \r\n"
+                },
+                {
+                    "date": 1730300607602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n \r\n import { useState, useCallback } from 'react';\r\n-import { QueryParser, QUERY_TYPES } from '../utils/queryParser';\r\n+import { QueryParser, QUERY_TYPES } from '../utils/quesry-parser';\r\n \r\n const queryParser = new QueryParser();\r\n \r\n const useQueryParser = () => {\r\n"
+                }
+            ],
+            "date": 1730296626474,
+            "name": "Commit-0",
+            "content": "# File: src/hooks/useQueryParser.js\r\n\r\nimport { useState, useCallback } from 'react';\r\nimport { QueryParser, QUERY_TYPES } from '../utils/queryParser';\r\n\r\nconst queryParser = new QueryParser();\r\n\r\nconst useQueryParser = () => {\r\n  const [queryResult, setQueryResult] = useState(null);\r\n  const [isProcessing, setIsProcessing] = useState(false);\r\n  const [error, setError] = useState(null);\r\n\r\n  const parseQuery = useCallback((query) => {\r\n    setIsProcessing(true);\r\n    setError(null);\r\n\r\n    try {\r\n      // Parse the query\r\n      const result = queryParser.parseQuery(query);\r\n      \r\n      // Validate the result\r\n      if (result.confidence < 0.4) { // Less than 40% confidence\r\n        setError({\r\n          type: 'low_confidence',\r\n          message: 'I\\'m not sure I understood that correctly. Could you rephrase your question?'\r\n        });\r\n        setQueryResult(null);\r\n        return null;\r\n      }\r\n\r\n      setQueryResult(result);\r\n      return result;\r\n\r\n    } catch (err) {\r\n      setError({\r\n        type: 'parsing_error',\r\n        message: 'Sorry, I had trouble understanding that query.'\r\n      });\r\n      setQueryResult(null);\r\n      return null;\r\n    } finally {\r\n      setIsProcessing(false);\r\n    }\r\n  }, []);\r\n\r\n  const getQueryDescription = useCallback((result) => {\r\n    if (!result) return '';\r\n\r\n    const timeRange = result.timeRange;\r\n    const startDate = timeRange.start.toLocaleDateString();\r\n    const endDate = timeRange.end.toLocaleDateString();\r\n\r\n    switch (result.type) {\r\n      case QUERY_TYPES.USAGE_INQUIRY:\r\n        return `Checking energy usage from ${startDate} to ${endDate}`;\r\n      \r\n      case QUERY_TYPES.COMPARISON:\r\n        return `Comparing energy usage for period ${startDate} to ${endDate}`;\r\n      \r\n      case QUERY_TYPES.PATTERN:\r\n        return `Analyzing usage patterns from ${startDate} to ${endDate}`;\r\n      \r\n      case QUERY_TYPES.ANOMALY:\r\n        return `Looking for unusual consumption patterns between ${startDate} and ${endDate}`;\r\n      \r\n      default:\r\n        return `Analyzing energy data from ${startDate} to ${endDate}`;\r\n    }\r\n  }, []);\r\n\r\n  const getSuggestedQueries = useCallback((error) => {\r\n    if (error?.type === 'low_confidence') {\r\n      return [\r\n        \"How much energy did I use yesterday?\",\r\n        \"Was my usage higher than normal last week?\",\r\n        \"What's my typical daily consumption?\",\r\n        \"Any unusual usage patterns this month?\"\r\n      ];\r\n    }\r\n    return [];\r\n  }, []);\r\n\r\n  return {\r\n    parseQuery,\r\n    queryResult,\r\n    isProcessing,\r\n    error,\r\n    getQueryDescription,\r\n    getSuggestedQueries\r\n  };\r\n};\r\n\r\nexport default useQueryParser;"
+        }
+    ]
+}

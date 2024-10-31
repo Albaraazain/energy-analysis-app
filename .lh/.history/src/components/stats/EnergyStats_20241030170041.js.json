@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/stats/EnergyStats_20241030170041.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947983,
+            "name": "Commit-0",
+            "content": "\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\n\r\nconst StatCard = ({ title, value, unit, description }) => (\r\n  <Card className=\"p-4\">\r\n    <div className=\"text-sm font-medium text-gray-500\">{title}</div>\r\n    <div className=\"mt-1 flex items-baseline\">\r\n      <div className=\"text-2xl font-semibold text-gray-900\">{value}</div>\r\n      {unit && <div className=\"ml-2 text-sm text-gray-500\">{unit}</div>}\r\n    </div>\r\n    {description && (\r\n      <div className=\"mt-1 text-sm text-gray-500\">{description}</div>\r\n    )}\r\n  </Card>\r\n);\r\n\r\nconst EnergyStats = ({ data }) => {\r\n  // Calculate statistics\r\n  const stats = React.useMemo(() => {\r\n    if (!data || data.length === 0) return null;\r\n\r\n    const consumption = data.map(d => d.consumption);\r\n    const total = consumption.reduce((sum, val) => sum + val, 0);\r\n    const average = total / consumption.length;\r\n    const max = Math.max(...consumption);\r\n    const min = Math.min(...consumption);\r\n\r\n    return {\r\n      total: total.toFixed(2),\r\n      average: average.toFixed(2),\r\n      max: max.toFixed(2),\r\n      min: min.toFixed(2),\r\n      readings: data.length\r\n    };\r\n  }, [data]);\r\n\r\n  if (!stats) {\r\n    return null;\r\n  }\r\n\r\n  return (\r\n    <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">\r\n      <StatCard\r\n        title=\"Total Consumption\"\r\n        value={stats.total}\r\n        unit=\"kWh\"\r\n        description=\"Total energy used in this period\"\r\n      />\r\n      <StatCard\r\n        title=\"Average Usage\"\r\n        value={stats.average}\r\n        unit=\"kWh\"\r\n        description=\"Average hourly consumption\"\r\n      />\r\n      <StatCard\r\n        title=\"Peak Usage\"\r\n        value={stats.max}\r\n        unit=\"kWh\"\r\n        description=\"Highest recorded consumption\"\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default EnergyStats;"
+        }
+    ]
+}

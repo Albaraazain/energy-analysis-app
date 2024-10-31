@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/test/components/ResponseDisplay.test.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299279134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299279134,
+            "name": "Commit-0",
+            "content": "# File: src/tests/components/ResponseDisplay.test.js\r\n\r\nimport React from 'react';\r\nimport { render, screen } from '../setup/test-utils';\r\nimport ResponseDisplay from '../../components/response/ResponseDisplay';\r\nimport { mockAnalysisResults } from '../mocks/dataMocks';\r\n\r\ndescribe('ResponseDisplay', () => {\r\n  it('renders analysis results', () => {\r\n    render(<ResponseDisplay analysisResult={mockAnalysisResults} />);\r\n    expect(screen.getByText(/energy analysis/i)).toBeInTheDocument();\r\n  });\r\n\r\n  it('shows insights when available', () => {\r\n    render(<ResponseDisplay analysisResult={mockAnalysisResults} />);\r\n    expect(screen.getByText(/consumption trend/i)).toBeInTheDocument();\r\n  });\r\n\r\n  it('handles empty state', () => {\r\n    render(<ResponseDisplay analysisResult={null} />);\r\n    expect(screen.getByText(/no analysis available/i)).toBeInTheDocument();\r\n  });\r\n});\r\n"
+        }
+    ]
+}

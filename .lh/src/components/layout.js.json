@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/layout.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730291033810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730297211468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-# File: src/components/Layout.js\r\n import React from 'react';\r\n import { Routes, Route } from 'react-router-dom';\r\n import Navbar from './Navbar';\r\n import EnergyDashboard from '../pages/EnergyDashboard';\r\n"
+                }
+            ],
+            "date": 1730291033810,
+            "name": "Commit-0",
+            "content": "# File: src/components/Layout.js\r\nimport React from 'react';\r\nimport { Routes, Route } from 'react-router-dom';\r\nimport Navbar from './Navbar';\r\nimport EnergyDashboard from '../pages/EnergyDashboard';\r\n\r\nconst Layout = () => {\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-50\">\r\n      <Navbar />\r\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6\">\r\n        <Routes>\r\n          <Route path=\"/\" element={<EnergyDashboard />} />\r\n        </Routes>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Layout;"
+        }
+    ]
+}

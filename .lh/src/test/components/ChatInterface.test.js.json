@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/test/components/ChatInterface.test.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730299256226,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730299493683,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n-# File: src/tests/components/ChatInterface.test.js\r\n \r\n import React from 'react';\r\n import { render, screen, fireEvent, waitFor } from '../setup/test-utils';\r\n-import ChatInterface from '../../components/chat/ChatInterface';\r\n+import ChatInterface from '../../components/chat/chatInterface';\r\n import { mockHandlers } from '../setup/test-utils';\r\n \r\n describe('ChatInterface', () => {\r\n   it('renders input field', () => {\r\n"
+                }
+            ],
+            "date": 1730299256226,
+            "name": "Commit-0",
+            "content": "# File: src/tests/components/ChatInterface.test.js\r\n\r\nimport React from 'react';\r\nimport { render, screen, fireEvent, waitFor } from '../setup/test-utils';\r\nimport ChatInterface from '../../components/chat/ChatInterface';\r\nimport { mockHandlers } from '../setup/test-utils';\r\n\r\ndescribe('ChatInterface', () => {\r\n  it('renders input field', () => {\r\n    render(<ChatInterface />);\r\n    expect(screen.getByPlaceholderText(/ask about your energy/i)).toBeInTheDocument();\r\n  });\r\n\r\n  it('handles message submission', async () => {\r\n    const { onQuerySubmit } = mockHandlers;\r\n    render(<ChatInterface onQuerySubmit={onQuerySubmit} />);\r\n    \r\n    const input = screen.getByPlaceholderText(/ask about your energy/i);\r\n    fireEvent.change(input, { target: { value: 'How much energy did I use yesterday?' } });\r\n    fireEvent.click(screen.getByText(/send/i));\r\n\r\n    await waitFor(() => {\r\n      expect(onQuerySubmit).toHaveBeenCalledWith('How much energy did I use yesterday?');\r\n    });\r\n  });\r\n\r\n  it('shows error message on invalid input', async () => {\r\n    render(<ChatInterface />);\r\n    \r\n    const input = screen.getByPlaceholderText(/ask about your energy/i);\r\n    fireEvent.change(input, { target: { value: '' } });\r\n    fireEvent.click(screen.getByText(/send/i));\r\n\r\n    expect(screen.getByText(/please enter a query/i)).toBeInTheDocument();\r\n  });\r\n});\r\n"
+        }
+    ]
+}

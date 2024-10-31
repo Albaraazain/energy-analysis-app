@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/Navbar.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730291081747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730297263331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,4 +17,6 @@\n       </div>\r\n     </nav>\r\n   );\r\n };\r\n+\r\n+export default Navbar;\r\n"
+                }
+            ],
+            "date": 1730291081747,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { Link } from 'react-router-dom';\r\n\r\nconst Navbar = () => {\r\n  return (\r\n    <nav className=\"bg-white shadow-sm\">\r\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\r\n        <div className=\"flex justify-between h-16\">\r\n          <div className=\"flex\">\r\n            <Link to=\"/\" className=\"flex items-center\">\r\n              <span className=\"text-xl font-semibold text-gray-900\">\r\n                Energy Analysis\r\n              </span>\r\n            </Link>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </nav>\r\n  );\r\n};\r\n"
+        }
+    ]
+}

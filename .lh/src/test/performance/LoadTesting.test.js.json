@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/test/performance/LoadTesting.test.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299140916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299140916,
+            "name": "Commit-0",
+            "content": "# File: src/tests/performance/loadTesting.js\r\n\r\nimport http from 'k6/http';\r\nimport { check, sleep } from 'k6';\r\n\r\nexport const options = {\r\n  stages: [\r\n    { duration: '30s', target: 20 }, // Ramp up to 20 users\r\n    { duration: '1m', target: 20 },  // Stay at 20 users\r\n    { duration: '30s', target: 0 },  // Ramp down to 0 users\r\n  ],\r\n  thresholds: {\r\n    http_req_duration: ['p(95)<500'], // 95% of requests should be below 500ms\r\n    http_req_failed: ['rate<0.01'],   // Less than 1% of requests should fail\r\n  },\r\n};\r\n\r\nexport default function () {\r\n  const response = http.get('http://localhost:3000/api/energy-data');\r\n  \r\n  check(response, {\r\n    'is status 200': (r) => r.status === 200,\r\n    'response time OK': (r) => r.timings.duration < 500,\r\n  });\r\n\r\n  sleep(1);\r\n}"
+        }
+    ]
+}

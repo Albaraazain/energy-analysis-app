@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/visualization/VisualizationContainer_20241030153122.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947984,
+            "name": "Commit-0",
+            "content": "# File: src/components/visualization/VisualizationContainer.js\r\n\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\nimport EnergyChart from '../charts/EnergyChart';\r\nimport EnergyStats from '../stats/EnergyStats';\r\nimport useEnergyData from '../../hooks/useEnergyData';\r\n\r\nconst VisualizationContainer = () => {\r\n  const {\r\n    data,\r\n    isLoading,\r\n    error,\r\n    stats,\r\n    refreshData\r\n  } = useEnergyData('energy_data.csv');\r\n\r\n  return (\r\n    <div className=\"space-y-6\">\r\n      {/* Stats Section */}\r\n      <div className=\"bg-white rounded-lg shadow\">\r\n        <div className=\"p-4\">\r\n          <div className=\"flex justify-between items-center mb-4\">\r\n            <h3 className=\"text-lg font-medium text-gray-900\">\r\n              Energy Overview\r\n            </h3>\r\n            <button\r\n              onClick={refreshData}\r\n              className=\"text-sm text-blue-600 hover:text-blue-500\"\r\n              disabled={isLoading}\r\n            >\r\n              Refresh\r\n            </button>\r\n          </div>\r\n          <EnergyStats data={data} />\r\n        </div>\r\n      </div>\r\n\r\n      {/* Chart Section */}\r\n      <Card>\r\n        <div className=\"p-4\">\r\n          <h3 className=\"text-lg font-medium text-gray-900 mb-4\">\r\n            Consumption Timeline\r\n          </h3>\r\n          <EnergyChart\r\n            data={data}\r\n            isLoading={isLoading}\r\n            error={error}\r\n          />\r\n        </div>\r\n      </Card>\r\n\r\n      {/* Data Quality Indicators */}\r\n      {stats && (stats.hasGaps || stats.hasAnomalies) && (\r\n        <div className=\"bg-yellow-50 border-l-4 border-yellow-400 p-4\">\r\n          <div className=\"flex\">\r\n            <div className=\"flex-shrink-0\">\r\n              <svg className=\"h-5 w-5 text-yellow-400\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\r\n                <path fillRule=\"evenodd\" d=\"M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z\" clipRule=\"evenodd\" />\r\n              </svg>\r\n            </div>\r\n            <div className=\"ml-3\">\r\n              <h3 className=\"text-sm font-medium text-yellow-800\">\r\n                Data Quality Notice\r\n              </h3>\r\n              <div className=\"mt-2 text-sm text-yellow-700\">\r\n                {stats.hasGaps && (\r\n                  <p>Some data points may be missing from the timeline.</p>\r\n                )}\r\n                {stats.hasAnomalies && (\r\n                  <p>Unusual consumption patterns detected in the data.</p>\r\n                )}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default VisualizationContainer;"
+        }
+    ]
+}

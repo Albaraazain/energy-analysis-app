@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/pages/EnergyDashboard_20241030152536.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947991,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { Card } from '../components/ui/card';\r\n\r\nconst EnergyDashboard = () => {\r\n  return (\r\n    <div className=\"space-y-6\">\r\n      {/* Main content wrapper */}\r\n      <div className=\"grid grid-cols-1 lg:grid-cols-3 gap-6\">\r\n        {/* Left section - Will contain chat interface */}\r\n        <div className=\"lg:col-span-2\">\r\n          <Card className=\"h-[600px]\">\r\n            <div className=\"p-4\">\r\n              <h2 className=\"text-lg font-semibold mb-4\">\r\n                Energy Analysis Chat\r\n              </h2>\r\n              {/* Chat interface will be added here */}\r\n              <div className=\"text-gray-500\">\r\n                Chat interface coming soon...\r\n              </div>\r\n            </div>\r\n          </Card>\r\n        </div>\r\n\r\n        {/* Right section - Will contain visualizations */}\r\n        <div className=\"lg:col-span-1\">\r\n          <Card className=\"h-[600px]\">\r\n            <div className=\"p-4\">\r\n              <h2 className=\"text-lg font-semibold mb-4\">\r\n                Energy Usage Overview\r\n              </h2>\r\n              {/* Visualization will be added here */}\r\n              <div className=\"text-gray-500\">\r\n                Visualization coming soon...\r\n              </div>\r\n            </div>\r\n          </Card>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default EnergyDashboard;\r\n"
+        }
+    ]
+}

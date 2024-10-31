@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/test/performance/PerformanceUtils.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299203150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299203150,
+            "name": "Commit-0",
+            "content": "# File: src/tests/performance/performanceUtils.js\r\n\r\n// Measure render time\r\nexport const measureRenderTime = async (renderFn) => {\r\n  const start = performance.now();\r\n  await renderFn();\r\n  return performance.now() - start;\r\n};\r\n\r\n// Measure memory usage\r\nexport const measureMemoryUsage = async () => {\r\n  if (performance.memory) {\r\n    return performance.memory.usedJSHeapSize;\r\n  }\r\n  return 0;\r\n};\r\n\r\n// Test data processing performance\r\nexport const testDataProcessing = (processFn, data, iterations = 100) => {\r\n  const times = [];\r\n  \r\n  for (let i = 0; i < iterations; i++) {\r\n    const start = performance.now();\r\n    processFn(data);\r\n    times.push(performance.now() - start);\r\n  }\r\n\r\n  return {\r\n    average: times.reduce((a, b) => a + b) / times.length,\r\n    min: Math.min(...times),\r\n    max: Math.max(...times),\r\n    p95: times.sort((a, b) => a - b)[Math.floor(times.length * 0.95)]\r\n  };\r\n};\r\n\r\n"
+        }
+    ]
+}

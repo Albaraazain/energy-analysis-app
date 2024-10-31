@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/tests/setup/test-utils.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299577234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299577234,
+            "name": "Commit-0",
+            "content": "\r\nimport React from 'react';\r\nimport { render } from '@testing-library/react';\r\nimport { EnergyAnalysisProvider } from '../../context/EnergyAnalysisContext';\r\n\r\n// Custom render function that includes providers\r\nconst customRender = (ui, options = {}) => {\r\n  const Wrapper = ({ children }) => (\r\n    <EnergyAnalysisProvider>\r\n      {children}\r\n    </EnergyAnalysisProvider>\r\n  );\r\n\r\n  return render(ui, { wrapper: Wrapper, ...options });\r\n};\r\n\r\n// Mock energy data for testing\r\nexport const mockEnergyData = [\r\n  {\r\n    timestamp: '2024-01-01T00:00:00',\r\n    consumption: 2.5\r\n  },\r\n  {\r\n    timestamp: '2024-01-01T01:00:00',\r\n    consumption: 2.3\r\n  },\r\n  // Add more mock data as needed\r\n];\r\n\r\n// Mock handlers for common actions\r\nexport const mockHandlers = {\r\n  onQuerySubmit: jest.fn(),\r\n  onTimeRangeChange: jest.fn(),\r\n  onViewChange: jest.fn()\r\n};\r\n\r\n// Helper to simulate loading states\r\nexport const createLoadingState = (duration = 1000) => {\r\n  return new Promise(resolve => setTimeout(resolve, duration));\r\n};\r\n\r\n// Export everything from RTL with our custom render\r\nexport * from '@testing-library/react';\r\nexport { customRender as render };\r\n\r\n"
+        }
+    ]
+}

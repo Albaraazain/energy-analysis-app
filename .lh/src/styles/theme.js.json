@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/styles/theme.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730298832838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730298905024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-# File: src/styles/theme.js\r\n \r\n // Theme configuration for consistent styling\r\n export const theme = {\r\n   colors: {\r\n"
+                }
+            ],
+            "date": 1730298832838,
+            "name": "Commit-0",
+            "content": "# File: src/styles/theme.js\r\n\r\n// Theme configuration for consistent styling\r\nexport const theme = {\r\n  colors: {\r\n    primary: {\r\n      50: '#eff6ff',\r\n      100: '#dbeafe',\r\n      500: '#3b82f6',\r\n      600: '#2563eb',\r\n      700: '#1d4ed8',\r\n    },\r\n    success: {\r\n      50: '#f0fdf4',\r\n      500: '#22c55e',\r\n      700: '#15803d',\r\n    },\r\n    warning: {\r\n      50: '#fffbeb',\r\n      500: '#f59e0b',\r\n      700: '#b45309',\r\n    },\r\n    error: {\r\n      50: '#fef2f2',\r\n      500: '#ef4444',\r\n      700: '#b91c1c',\r\n    },\r\n    neutral: {\r\n      50: '#f9fafb',\r\n      100: '#f3f4f6',\r\n      200: '#e5e7eb',\r\n      300: '#d1d5db',\r\n      400: '#9ca3af',\r\n      500: '#6b7280',\r\n      600: '#4b5563',\r\n      700: '#374151',\r\n      800: '#1f2937',\r\n      900: '#111827',\r\n    }\r\n  },\r\n  spacing: {\r\n    xs: '0.25rem',\r\n    sm: '0.5rem',\r\n    md: '1rem',\r\n    lg: '1.5rem',\r\n    xl: '2rem',\r\n    '2xl': '3rem',\r\n  },\r\n  breakpoints: {\r\n    sm: '640px',\r\n    md: '768px',\r\n    lg: '1024px',\r\n    xl: '1280px',\r\n    '2xl': '1536px',\r\n  },\r\n  animation: {\r\n    timing: {\r\n      fast: '150ms',\r\n      normal: '300ms',\r\n      slow: '500ms',\r\n    },\r\n    easing: {\r\n      easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',\r\n      easeOut: 'cubic-bezier(0, 0, 0.2, 1)',\r\n      easeIn: 'cubic-bezier(0.4, 0, 1, 1)',\r\n    },\r\n  },\r\n  typography: {\r\n    fontFamily: {\r\n      sans: 'Inter, system-ui, -apple-system, sans-serif',\r\n      mono: 'ui-monospace, monospace',\r\n    },\r\n    fontSize: {\r\n      xs: '0.75rem',\r\n      sm: '0.875rem',\r\n      base: '1rem',\r\n      lg: '1.125rem',\r\n      xl: '1.25rem',\r\n      '2xl': '1.5rem',\r\n    },\r\n    fontWeight: {\r\n      normal: '400',\r\n      medium: '500',\r\n      semibold: '600',\r\n      bold: '700',\r\n    },\r\n  }\r\n};"
+        }
+    ]
+}

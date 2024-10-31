@@ -1,0 +1,22 @@
+{
+    "sourceFile": "utils/analysis-utils.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730290317081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730290375467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     const range2Avg = calculateAverageConsumption(data, range2Start, range2End);\r\n     \r\n     return {\r\n       range1Average: range1Avg,\r\n-      range2Average: range2Avg,\r\n+      range2Average: range2Avg, \r\n       difference: range1Avg - range2Avg,\r\n       percentageChange: ((range1Avg - range2Avg) / range2Avg) * 100\r\n     };\r\n   };\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1730290317081,
+            "name": "Commit-0",
+            "content": "export const calculateAverageConsumption = (data, startTime, endTime) => {\r\n    const filteredData = data.filter(reading => {\r\n      const timestamp = new Date(reading.timestamp);\r\n      return timestamp >= startTime && timestamp <= endTime;\r\n    });\r\n    \r\n    const sum = filteredData.reduce((acc, reading) => acc + reading.consumption, 0);\r\n    return filteredData.length ? sum / filteredData.length : 0;\r\n  };\r\n  \r\n  export const findEvents = (data, startTime, endTime) => {\r\n    return data.filter(reading => {\r\n      const timestamp = new Date(reading.timestamp);\r\n      return timestamp >= startTime && \r\n             timestamp <= endTime && \r\n             reading.event;\r\n    });\r\n  };\r\n  \r\n  export const compareTimeRanges = (data, range1Start, range1End, range2Start, range2End) => {\r\n    const range1Avg = calculateAverageConsumption(data, range1Start, range1End);\r\n    const range2Avg = calculateAverageConsumption(data, range2Start, range2End);\r\n    \r\n    return {\r\n      range1Average: range1Avg,\r\n      range2Average: range2Avg,\r\n      difference: range1Avg - range2Avg,\r\n      percentageChange: ((range1Avg - range2Avg) / range2Avg) * 100\r\n    };\r\n  };"
+        }
+    ]
+}

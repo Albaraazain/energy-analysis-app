@@ -1,0 +1,22 @@
+{
+    "sourceFile": "utils/performance.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730298286227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730298291619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-# File: src/utils/performance.js\r\n \r\n // Debounce utility for performance optimization\r\n export const debounce = (func, wait) => {\r\n   let timeout;\r\n"
+                }
+            ],
+            "date": 1730298286227,
+            "name": "Commit-0",
+            "content": "# File: src/utils/performance.js\r\n\r\n// Debounce utility for performance optimization\r\nexport const debounce = (func, wait) => {\r\n  let timeout;\r\n  return function executedFunction(...args) {\r\n    const later = () => {\r\n      clearTimeout(timeout);\r\n      func(...args);\r\n    };\r\n    clearTimeout(timeout);\r\n    timeout = setTimeout(later, wait);\r\n  };\r\n};\r\n\r\n// Memoization utility for expensive calculations\r\nexport const memoize = (fn) => {\r\n  const cache = new Map();\r\n  return (...args) => {\r\n    const key = JSON.stringify(args);\r\n    if (cache.has(key)) return cache.get(key);\r\n    const result = fn.apply(this, args);\r\n    cache.set(key, result);\r\n    return result;\r\n  };\r\n};\r\n\r\n// Chunk data processing for better performance\r\nexport const processInChunks = async (items, processItem, chunkSize = 1000) => {\r\n  const results = [];\r\n  for (let i = 0; i < items.length; i += chunkSize) {\r\n    const chunk = items.slice(i, i + chunkSize);\r\n    const processedChunk = await Promise.all(chunk.map(processItem));\r\n    results.push(...processedChunk);\r\n    // Allow UI to update between chunks\r\n    await new Promise(resolve => setTimeout(resolve, 0));\r\n  }\r\n  return results;\r\n};\r\n\r\n// Virtual scrolling helper\r\nexport const getVisibleItems = (items, scrollTop, viewportHeight, itemHeight) => {\r\n  const startIndex = Math.floor(scrollTop / itemHeight);\r\n  const endIndex = Math.min(\r\n    startIndex + Math.ceil(viewportHeight / itemHeight + 1),\r\n    items.length\r\n  );\r\n  return {\r\n    items: items.slice(startIndex, endIndex),\r\n    startIndex,\r\n    endIndex\r\n  };\r\n};"
+        }
+    ]
+}

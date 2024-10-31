@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/ui/card.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730299384399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730299389964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-# File: src/components/ui/card.js\r\n \r\n import React from 'react';\r\n \r\n export const Card = ({ children, className = '', ...props }) => {\r\n"
+                }
+            ],
+            "date": 1730299384399,
+            "name": "Commit-0",
+            "content": "# File: src/components/ui/card.js\r\n\r\nimport React from 'react';\r\n\r\nexport const Card = ({ children, className = '', ...props }) => {\r\n  return (\r\n    <div\r\n      className={`bg-white shadow-sm rounded-lg ${className}`}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport const CardHeader = ({ children, className = '', ...props }) => {\r\n  return (\r\n    <div className={`px-4 py-5 border-b border-gray-200 ${className}`} {...props}>\r\n      {children}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport const CardContent = ({ children, className = '', ...props }) => {\r\n  return (\r\n    <div className={`px-4 py-5 ${className}`} {...props}>\r\n      {children}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport const CardTitle = ({ children, className = '', ...props }) => {\r\n  return (\r\n    <h3 className={`text-lg font-medium leading-6 text-gray-900 ${className}`} {...props}>\r\n      {children}\r\n    </h3>\r\n  );\r\n};\r\n\r\nexport const CardDescription = ({ children, className = '', ...props }) => {\r\n  return (\r\n    <p className={`mt-1 text-sm text-gray-500 ${className}`} {...props}>\r\n      {children}\r\n    </p>\r\n  );\r\n};"
+        }
+    ]
+}

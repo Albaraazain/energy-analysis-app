@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/chat/chatInterface_20241030171307.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947947,
+            "name": "Commit-0",
+            "content": "\r\nimport React, { useState, useRef, useEffect } from 'react';\r\nimport { Card } from '../components/ui/card';\r\nimport MessageList from './MessageList';\r\nimport InputArea from './InputArea';\r\nimport useQueryParser from '../../hooks/useQueryParser';\r\nimport useConsumptionAnalysis from '../../hooks/useConsumptionAnalysis';\r\nimport useResponseGenerator from '../../hooks/useResponseGenerator';\r\n\r\nconst ChatInterface = ({ energyData }) => {\r\n  const [messages, setMessages] = useState([]);\r\n  const [isProcessing, setIsProcessing] = useState(false);\r\n  const chatEndRef = useRef(null);\r\n  \r\n  const { parseQuery, queryResult } = useQueryParser();\r\n  const { analysis, isAnalyzing } = useConsumptionAnalysis(energyData, queryResult?.timeRange);\r\n  const { generateResponse } = useResponseGenerator(analysis, queryResult?.type);\r\n\r\n  // Auto-scroll to bottom when new messages arrive\r\n  useEffect(() => {\r\n    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });\r\n  }, [messages]);\r\n\r\n  const handleNewMessage = async (message) => {\r\n    // Add user message\r\n    const userMessage = {\r\n      id: Date.now(),\r\n      type: 'user',\r\n      content: message,\r\n      timestamp: new Date()\r\n    };\r\n    \r\n    setMessages(prev => [...prev, userMessage]);\r\n    setIsProcessing(true);\r\n\r\n    try {\r\n      // Parse query and generate response\r\n      const parsedQuery = await parseQuery(message);\r\n      \r\n      if (!parsedQuery) {\r\n        throw new Error('Could not understand the query');\r\n      }\r\n\r\n      // Wait for analysis\r\n      if (!analysis || isAnalyzing) {\r\n        await new Promise(resolve => setTimeout(resolve, 1000)); // Give time for analysis\r\n      }\r\n\r\n      // Generate response\r\n      const response = generateResponse();\r\n\r\n      // Add system response\r\n      const systemMessage = {\r\n        id: Date.now(),\r\n        type: 'system',\r\n        content: response.text,\r\n        visualizations: response.visualizations,\r\n        timestamp: new Date()\r\n      };\r\n\r\n      setMessages(prev => [...prev, systemMessage]);\r\n\r\n    } catch (error) {\r\n      // Add error message\r\n      const errorMessage = {\r\n        id: Date.now(),\r\n        type: 'system',\r\n        content: \"I'm sorry, I couldn't process that request. Could you rephrase it?\",\r\n        isError: true,\r\n        timestamp: new Date()\r\n      };\r\n\r\n      setMessages(prev => [...prev, errorMessage]);\r\n    } finally {\r\n      setIsProcessing(false);\r\n    }\r\n  };\r\n\r\n  return (\r\n    <Card className=\"h-[600px] flex flex-col\">\r\n      <div className=\"flex-1 overflow-y-auto p-4\">\r\n        <MessageList messages={messages} />\r\n        <div ref={chatEndRef} />\r\n      </div>\r\n      <InputArea \r\n        onSubmit={handleNewMessage}\r\n        isProcessing={isProcessing}\r\n      />\r\n    </Card>\r\n  );\r\n};\r\n\r\nexport default ChatInterface;"
+        }
+    ]
+}

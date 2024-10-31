@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/response/InsightCard_20241030171614.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947951,
+            "name": "Commit-0",
+            "content": "\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\n\r\nconst InsightCard = ({ type, title, description, value, impact }) => {\r\n  const getTypeStyles = () => {\r\n    switch (type) {\r\n      case 'positive':\r\n        return 'bg-green-50 border-green-200 text-green-700';\r\n      case 'negative':\r\n        return 'bg-red-50 border-red-200 text-red-700';\r\n      case 'neutral':\r\n        return 'bg-blue-50 border-blue-200 text-blue-700';\r\n      default:\r\n        return 'bg-gray-50 border-gray-200 text-gray-700';\r\n    }\r\n  };\r\n\r\n  const getImpactIcon = () => {\r\n    if (impact > 0) {\r\n      return '↑';\r\n    } else if (impact < 0) {\r\n      return '↓';\r\n    }\r\n    return '→';\r\n  };\r\n\r\n  return (\r\n    <Card className={`p-4 border-l-4 ${getTypeStyles()}`}>\r\n      <div className=\"flex justify-between items-start\">\r\n        <h4 className=\"font-medium\">{title}</h4>\r\n        {value && (\r\n          <span className=\"text-sm font-semibold\">\r\n            {getImpactIcon()} {Math.abs(value)}%\r\n          </span>\r\n        )}\r\n      </div>\r\n      <p className=\"mt-1 text-sm opacity-90\">{description}</p>\r\n    </Card>\r\n  );\r\n};\r\n"
+        }
+    ]
+}

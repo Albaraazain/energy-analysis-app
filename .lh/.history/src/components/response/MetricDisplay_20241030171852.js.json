@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/response/MetricDisplay_20241030171852.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947951,
+            "name": "Commit-0",
+            "content": "// MetricDisplay for numerical data\r\n\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\n\r\nconst MetricDisplay = ({ title, value, unit, change, timeframe }) => {\r\n  const formatValue = (val) => {\r\n    if (typeof val === 'number') {\r\n      return val.toFixed(2);\r\n    }\r\n    return val;\r\n  };\r\n\r\n  const getChangeColor = () => {\r\n    if (!change) return 'text-gray-500';\r\n    return change > 0 ? 'text-green-600' : 'text-red-600';\r\n  };\r\n\r\n  return (\r\n    <Card className=\"p-4\">\r\n      <div className=\"text-sm font-medium text-gray-500\">{title}</div>\r\n      <div className=\"mt-1 flex items-baseline\">\r\n        <div className=\"text-2xl font-semibold\">\r\n          {formatValue(value)}\r\n        </div>\r\n        {unit && (\r\n          <div className=\"ml-2 text-sm text-gray-500\">{unit}</div>\r\n        )}\r\n      </div>\r\n      {(change || timeframe) && (\r\n        <div className=\"mt-2 flex items-center text-sm\">\r\n          {change && (\r\n            <span className={`font-medium ${getChangeColor()}`}>\r\n              {change > 0 ? '↑' : '↓'} {Math.abs(change)}%\r\n            </span>\r\n          )}\r\n          {timeframe && (\r\n            <span className=\"text-gray-500 ml-2\">\r\n              vs {timeframe}\r\n            </span>\r\n          )}\r\n        </div>\r\n      )}\r\n    </Card>\r\n  );\r\n};\r\n\r\n"
+        }
+    ]
+}

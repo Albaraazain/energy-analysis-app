@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/response/ComparisonView.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730297817227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730300525577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n \r\n import React from 'react';\r\n-import { Card } from '../components/ui/card';\r\n-import {\r\n+import { Card } from '../ui/card';import {\r\n   BarChart,\r\n   Bar,\r\n   XAxis,\r\n   YAxis,\r\n"
+                }
+            ],
+            "date": 1730297817227,
+            "name": "Commit-0",
+            "content": "\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\nimport {\r\n  BarChart,\r\n  Bar,\r\n  XAxis,\r\n  YAxis,\r\n  Tooltip,\r\n  ResponsiveContainer\r\n} from 'recharts';\r\n\r\nconst ComparisonView = ({ data, type }) => {\r\n  const formatData = (data) => {\r\n    switch (type) {\r\n      case 'daily':\r\n        return data.map(item => ({\r\n          ...item,\r\n          name: new Date(item.timestamp).toLocaleDateString('en-US', {\r\n            weekday: 'short'\r\n          })\r\n        }));\r\n      case 'hourly':\r\n        return data.map(item => ({\r\n          ...item,\r\n          name: new Date(item.timestamp).getHours() + ':00'\r\n        }));\r\n      default:\r\n        return data;\r\n    }\r\n  };\r\n\r\n  const formattedData = formatData(data);\r\n\r\n  return (\r\n    <Card className=\"p-4\">\r\n      <h4 className=\"font-medium text-gray-900 mb-4\">\r\n        Consumption Comparison\r\n      </h4>\r\n      <div className=\"h-64\">\r\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\r\n          <BarChart data={formattedData}>\r\n            <XAxis dataKey=\"name\" />\r\n            <YAxis />\r\n            <Tooltip />\r\n            <Bar\r\n              dataKey=\"value\"\r\n              fill=\"#3B82F6\"\r\n              radius={[4, 4, 0, 0]}\r\n            />\r\n          </BarChart>\r\n        </ResponsiveContainer>\r\n      </div>\r\n    </Card>\r\n  );\r\n};\r\n\r\nexport default ComparisonView;"
+        }
+    ]
+}

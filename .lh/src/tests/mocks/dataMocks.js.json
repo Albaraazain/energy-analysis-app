@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/tests/mocks/dataMocks.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299558771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299558771,
+            "name": "Commit-0",
+            "content": "# File: src/tests/mocks/dataMocks.js\r\n\r\n// Mock response for energy data\r\nexport const mockEnergyResponse = {\r\n  data: mockEnergyData,\r\n  summary: {\r\n    totalConsumption: 4.8,\r\n    averageConsumption: 2.4,\r\n    peakUsage: 2.5\r\n  }\r\n};\r\n\r\n// Mock error responses\r\nexport const mockErrorResponses = {\r\n  dataLoadError: {\r\n    message: 'Failed to load energy data',\r\n    code: 'DATA_LOAD_ERROR'\r\n  },\r\n  queryError: {\r\n    message: 'Invalid query format',\r\n    code: 'QUERY_ERROR'\r\n  }\r\n};\r\n\r\n// Mock time ranges\r\nexport const mockTimeRanges = {\r\n  day: {\r\n    start: new Date('2024-01-01T00:00:00'),\r\n    end: new Date('2024-01-01T23:59:59')\r\n  },\r\n  week: {\r\n    start: new Date('2024-01-01T00:00:00'),\r\n    end: new Date('2024-01-07T23:59:59')\r\n  }\r\n};\r\n\r\n// Mock analysis results\r\nexport const mockAnalysisResults = {\r\n  trends: {\r\n    direction: 'increasing',\r\n    magnitude: 1.2,\r\n    confidence: 0.8\r\n  },\r\n  patterns: {\r\n    daily: {\r\n      morning: { average: 2.1 },\r\n      evening: { average: 2.8 }\r\n    }\r\n  }\r\n};"
+        }
+    ]
+}

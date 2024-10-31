@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".history/src/components/response/ResponseDisplay_20241030171538.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299947954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299947954,
+            "name": "Commit-0",
+            "content": "\r\nimport React from 'react';\r\nimport { Card } from '../components/ui/card';\r\nimport InsightCard from './InsightCard';\r\nimport MetricDisplay from './MetricDisplay';\r\nimport ComparisonView from './ComparisonView';\r\n\r\nconst ResponseDisplay = ({ analysisResult, queryType }) => {\r\n  if (!analysisResult) return null;\r\n\r\n  const { summary, insights, metrics, comparisons } = analysisResult;\r\n\r\n  return (\r\n    <div className=\"space-y-4\">\r\n      {/* Main Summary Card */}\r\n      <Card className=\"p-4\">\r\n        <h3 className=\"text-lg font-semibold text-gray-900 mb-2\">\r\n          Energy Analysis\r\n        </h3>\r\n        <p className=\"text-gray-600\">\r\n          {summary}\r\n        </p>\r\n      </Card>\r\n\r\n      {/* Key Metrics */}\r\n      {metrics && (\r\n        <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">\r\n          {metrics.map((metric, index) => (\r\n            <MetricDisplay\r\n              key={index}\r\n              title={metric.title}\r\n              value={metric.value}\r\n              unit={metric.unit}\r\n              change={metric.change}\r\n              timeframe={metric.timeframe}\r\n            />\r\n          ))}\r\n        </div>\r\n      )}\r\n\r\n      {/* Insights Section */}\r\n      {insights && insights.length > 0 && (\r\n        <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\r\n          {insights.map((insight, index) => (\r\n            <InsightCard\r\n              key={index}\r\n              type={insight.type}\r\n              title={insight.title}\r\n              description={insight.description}\r\n              value={insight.value}\r\n              impact={insight.impact}\r\n            />\r\n          ))}\r\n        </div>\r\n      )}\r\n\r\n      {/* Comparisons */}\r\n      {comparisons && (\r\n        <ComparisonView \r\n          data={comparisons}\r\n          type={queryType}\r\n        />\r\n      )}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default ResponseDisplay;"
+        }
+    ]
+}

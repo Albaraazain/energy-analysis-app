@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/test/hooks/useEnergyAnalysis.test.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730299305212,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730299305212,
+            "name": "Commit-0",
+            "content": "# File: src/tests/hooks/useEnergyAnalysis.test.js\r\n\r\nimport { renderHook, act } from '@testing-library/react-hooks';\r\nimport { useEnergyAnalysis } from '../../hooks/useEnergyAnalysis';\r\nimport { mockEnergyData, mockTimeRanges } from '../mocks/dataMocks';\r\n\r\ndescribe('useEnergyAnalysis', () => {\r\n  it('initializes with default state', () => {\r\n    const { result } = renderHook(() => useEnergyAnalysis());\r\n    expect(result.current.isLoading).toBeFalsy();\r\n    expect(result.current.data).toBeNull();\r\n  });\r\n\r\n  it('loads and processes data', async () => {\r\n    const { result, waitForNextUpdate } = renderHook(() => useEnergyAnalysis());\r\n    \r\n    act(() => {\r\n      result.current.loadData(mockEnergyData);\r\n    });\r\n\r\n    await waitForNextUpdate();\r\n    \r\n    expect(result.current.data).toEqual(mockEnergyData);\r\n    expect(result.current.processedData).toBeTruthy();\r\n  });\r\n\r\n  it('handles time range changes', () => {\r\n    const { result } = renderHook(() => useEnergyAnalysis());\r\n    \r\n    act(() => {\r\n      result.current.setTimeRange(mockTimeRanges.day);\r\n    });\r\n\r\n    expect(result.current.timeRange).toEqual(mockTimeRanges.day);\r\n  });\r\n});"
+        }
+    ]
+}
